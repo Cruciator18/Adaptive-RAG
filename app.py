@@ -1,11 +1,9 @@
 import streamlit as st
 from graph import app # Ensure this points to your compiled LangGraph
 
-# 3. Layout and Container Constraints
-# 'centered' natively restricts the UI to an ~800px max-width container.
+
 st.set_page_config(page_title="Adaptive RAG Agent", layout="centered", initial_sidebar_state="collapsed")
 
-# 2 & 4. Refine Typography, Iconography, and Input Area via Custom CSS
 st.markdown("""
 <style>
     /* Hide the default Streamlit top padding */
@@ -75,7 +73,6 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 2. Render Header with SVG Node Icon and Top-Right Settings Icon
 st.markdown("""
 <div class="header-wrapper">
     <div class="title-wrapper">
@@ -105,12 +102,11 @@ st.markdown("""
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-# --- 1. Optimize Empty State: Suggested Prompts ---
-# We check if the chat is empty. If it is, we show the pills.
+
 active_prompt = None
 
 if len(st.session_state.messages) == 0:
-    st.write("##### Get started")
+    st.write(" Get started")
     col1, col2, col3 = st.columns(3)
     
     with col1:
@@ -130,8 +126,7 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-# --- User Input Handling ---
-# We capture input from either the chat bar OR one of the suggested prompt buttons
+
 chat_bar_input = st.chat_input("Ask a question about the document...")
 
 if chat_bar_input:
@@ -143,7 +138,7 @@ if active_prompt:
     with st.chat_message("user"):
         st.markdown(active_prompt)
 
-    # Agent Response
+    
     with st.chat_message("assistant"):
         with st.status("Agent is thinking...", expanded=True) as status_box:
             initial_state = {"question": active_prompt, "search_count": 0}
@@ -161,5 +156,5 @@ if active_prompt:
         st.markdown(final_generation)
         st.session_state.messages.append({"role": "assistant", "content": final_generation})
         
-        # We trigger a rerun so the empty state buttons disappear smoothly
+        
         st.rerun()
