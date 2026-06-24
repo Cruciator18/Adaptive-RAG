@@ -1,3 +1,3 @@
 ﻿# Adaptive-RAG
 
- ![Alt Text](images/RAG FLOW.webp "Working of Adaptive RAG")
+
