@@ -3,5 +3,5 @@
 
 Below is the design and decision flow of this Advanced Adaptive RAG pipeline:
 
-![Adaptive RAG Flow Architecture](images/RAG FLOW.webp)
+![Adaptive RAG Flow Architecture](images\RAGFLOW.webp)
 
