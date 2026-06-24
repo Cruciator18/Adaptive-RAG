@@ -5,7 +5,7 @@ def load_and_chunk_pdf(file_path: str):
     """
     Loads a PDF and splits it into semantic chunks ready for vectorization.
     """
-    print(f"--- LOADING PDF: {file_path} ---")
+    print(f"LOADING PDF: {file_path}")
     
     # 1. Load the PDF using the advanced PyMuPDF loader
     # FIX: Changed 'path=' to 'file_path=' and used the passed variable
@@ -32,7 +32,7 @@ def load_and_chunk_pdf(file_path: str):
         print("\n--- SAMPLE CHUNK (First 200 chars) ---")
         print(f"{chunks[0].page_content[:200]}...")
         print(f"Metadata: {chunks[0].metadata}")
-        print("--------------------------------------\n")
+        print("\n")
         
     return chunks
 
